@@ -2,15 +2,15 @@
 
 @theme inline {
   /* Neutral canvas (dark default) */
-  --color-bg:        oklch(0.145 0 0);    /* near-black */
-  --color-surface:   oklch(0.205 0 0);    /* card */
-  --color-surface-2: oklch(0.245 0 0);    /* elevated */
+  --color-bg:        oklch(0.145 0 0);
+  --color-surface:   oklch(0.205 0 0);
+  --color-surface-2: oklch(0.245 0 0);
   --color-border:    oklch(0.305 0 0);
-  --color-fg:        oklch(0.985 0 0);    /* primary text */
-  --color-fg-muted:  oklch(0.708 0 0);    /* secondary */
-  --color-fg-dim:    oklch(0.556 0 0);    /* tertiary */
+  --color-fg:        oklch(0.985 0 0);
+  --color-fg-muted:  oklch(0.708 0 0);
+  --color-fg-dim:    oklch(0.556 0 0);
 
-  /* Brand: Cool Blue (consulting authority) */
+  /* Brand: Cool Blue */
   --color-brand-50:  oklch(0.97 0.02 240);
   --color-brand-500: oklch(0.62 0.19 250);
   --color-brand-600: oklch(0.55 0.21 252);
@@ -26,6 +26,14 @@
   --font-sans:    var(--font-inter), system-ui, sans-serif;
   --font-display: var(--font-space-grotesk), var(--font-sans);
   --font-mono:    var(--font-jetbrains-mono), ui-monospace, monospace;
+
+  /* Motion */
+  --ease-out:      cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+  --dur-fast:      150ms;
+  --dur-base:      200ms;
+  --dur-slow:      300ms;
+  --dur-reveal:    500ms;
 }
 
 :root {
@@ -36,17 +44,18 @@
   --color-fg:        oklch(0.985 0 0);
   --color-fg-muted:  oklch(0.708 0 0);
   --color-fg-dim:    oklch(0.556 0 0);
+  color-scheme: dark;
 }
 
-/* Light mode override */
 :root[data-theme="light"] {
-  --color-bg:        oklch(0.985 0.005 90);  /* Cloud Dancer */
+  --color-bg:        oklch(0.985 0.005 90);
   --color-surface:   oklch(1 0 0);
   --color-surface-2: oklch(0.97 0 0);
   --color-border:    oklch(0.92 0 0);
   --color-fg:        oklch(0.15 0 0);
   --color-fg-muted:  oklch(0.42 0 0);
   --color-fg-dim:    oklch(0.55 0 0);
+  color-scheme: light;
 }
 
 @layer utilities {
@@ -58,10 +67,69 @@
       oklch(0.70 0.20 340) 100%
     );
   }
+
+  .glass {
+    backdrop-filter: blur(20px) saturate(1.4);
+    background: oklch(1 0 0 / 0.04);
+    border: 1px solid oklch(1 0 0 / 0.08);
+  }
+
+  .text-balance { text-wrap: balance; }
 }
 
 body {
   background: var(--color-bg);
   color: var(--color-fg);
   font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Focus rings */
+:focus-visible {
+  outline: 2px solid var(--color-brand-500);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* Skip link */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 8px;
+  padding: 8px 12px;
+  background: var(--color-fg);
+  color: var(--color-bg);
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  z-index: 100;
+  transition: top var(--dur-fast) var(--ease-out);
+}
+.skip-link:focus { top: 8px; }
+
+/* Scroll-reveal */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; } to { opacity: 1; }
+}
+
+.reveal      { animation: fadeInUp var(--dur-reveal) var(--ease-out) both; }
+.reveal-fade { animation: fadeIn   var(--dur-reveal) var(--ease-out) both; }
+.delay-1 { animation-delay: 50ms; }
+.delay-2 { animation-delay: 100ms; }
+.delay-3 { animation-delay: 150ms; }
+.delay-4 { animation-delay: 200ms; }
+.delay-5 { animation-delay: 250ms; }
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
