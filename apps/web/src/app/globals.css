@@ -1,33 +1,33 @@
 @import "tailwindcss";
 
+/* ─────────────────────────────────────────────────────────
+   Tailwind v4 theme — bound to CSS vars below.
+   Vars resolve from :root[data-theme="..."] selectors so
+   themes can swap at runtime without re-rendering.
+   ──────────────────────────────────────────────────────── */
 @theme inline {
-  /* Neutral canvas (dark default) */
-  --color-bg:        oklch(0.145 0 0);
-  --color-surface:   oklch(0.205 0 0);
-  --color-surface-2: oklch(0.245 0 0);
-  --color-border:    oklch(0.305 0 0);
-  --color-fg:        oklch(0.985 0 0);
-  --color-fg-muted:  oklch(0.708 0 0);
-  --color-fg-dim:    oklch(0.556 0 0);
+  --color-bg:        var(--c-bg);
+  --color-surface:   var(--c-surface);
+  --color-surface-2: var(--c-surface-2);
+  --color-border:    var(--c-border);
+  --color-fg:        var(--c-fg);
+  --color-fg-muted:  var(--c-fg-muted);
+  --color-fg-dim:    var(--c-fg-dim);
 
-  /* Brand: Cool Blue */
-  --color-brand-50:  oklch(0.97 0.02 240);
-  --color-brand-500: oklch(0.62 0.19 250);
-  --color-brand-600: oklch(0.55 0.21 252);
-  --color-brand-700: oklch(0.48 0.20 254);
+  --color-brand-50:  var(--c-brand-50);
+  --color-brand-500: var(--c-brand-500);
+  --color-brand-600: var(--c-brand-600);
+  --color-brand-700: var(--c-brand-700);
 
-  /* Semantic */
-  --color-success: oklch(0.70 0.17 145);
-  --color-warning: oklch(0.78 0.16 80);
-  --color-danger:  oklch(0.62 0.22 25);
-  --color-info:    var(--color-brand-500);
+  --color-success: var(--c-success);
+  --color-warning: var(--c-warning);
+  --color-danger:  var(--c-danger);
+  --color-info:    var(--c-brand-500);
 
-  /* Fonts */
   --font-sans:    var(--font-inter), system-ui, sans-serif;
   --font-display: var(--font-space-grotesk), var(--font-sans);
   --font-mono:    var(--font-jetbrains-mono), ui-monospace, monospace;
 
-  /* Motion */
   --ease-out:      cubic-bezier(0.16, 1, 0.3, 1);
   --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
   --dur-fast:      150ms;
@@ -36,42 +36,197 @@
   --dur-reveal:    500ms;
 }
 
-:root {
-  --color-bg:        oklch(0.145 0 0);
-  --color-surface:   oklch(0.205 0 0);
-  --color-surface-2: oklch(0.245 0 0);
-  --color-border:    oklch(0.305 0 0);
-  --color-fg:        oklch(0.985 0 0);
-  --color-fg-muted:  oklch(0.708 0 0);
-  --color-fg-dim:    oklch(0.556 0 0);
+/* ─── Theme: dark (default) ────────────────────────────── */
+:root,
+:root[data-theme="dark"] {
+  --c-bg:        oklch(0.145 0 0);
+  --c-surface:   oklch(0.205 0 0);
+  --c-surface-2: oklch(0.245 0 0);
+  --c-border:    oklch(0.305 0 0);
+  --c-fg:        oklch(0.985 0 0);
+  --c-fg-muted:  oklch(0.708 0 0);
+  --c-fg-dim:    oklch(0.556 0 0);
+
+  --c-brand-50:  oklch(0.97 0.02 240);
+  --c-brand-500: oklch(0.62 0.19 250);
+  --c-brand-600: oklch(0.55 0.21 252);
+  --c-brand-700: oklch(0.48 0.20 254);
+
+  --c-success: oklch(0.70 0.17 145);
+  --c-warning: oklch(0.78 0.16 80);
+  --c-danger:  oklch(0.62 0.22 25);
+
+  --gradient-iridescent: linear-gradient(
+    135deg,
+    oklch(0.75 0.18 220) 0%,
+    oklch(0.65 0.22 290) 50%,
+    oklch(0.70 0.20 340) 100%
+  );
+
   color-scheme: dark;
 }
 
+/* ─── Theme: light (Cloud Dancer + cool blue) ──────────── */
 :root[data-theme="light"] {
-  --color-bg:        oklch(0.985 0.005 90);
-  --color-surface:   oklch(1 0 0);
-  --color-surface-2: oklch(0.97 0 0);
-  --color-border:    oklch(0.92 0 0);
-  --color-fg:        oklch(0.15 0 0);
-  --color-fg-muted:  oklch(0.42 0 0);
-  --color-fg-dim:    oklch(0.55 0 0);
+  --c-bg:        oklch(0.985 0.005 90);
+  --c-surface:   oklch(1 0 0);
+  --c-surface-2: oklch(0.97 0 0);
+  --c-border:    oklch(0.92 0 0);
+  --c-fg:        oklch(0.15 0 0);
+  --c-fg-muted:  oklch(0.42 0 0);
+  --c-fg-dim:    oklch(0.55 0 0);
+
+  --c-brand-50:  oklch(0.97 0.02 240);
+  --c-brand-500: oklch(0.55 0.21 252);
+  --c-brand-600: oklch(0.48 0.20 254);
+  --c-brand-700: oklch(0.42 0.18 256);
+
+  --c-success: oklch(0.55 0.18 145);
+  --c-warning: oklch(0.68 0.18 80);
+  --c-danger:  oklch(0.55 0.22 25);
+
+  --gradient-iridescent: linear-gradient(
+    135deg,
+    oklch(0.70 0.16 220) 0%,
+    oklch(0.62 0.22 290) 50%,
+    oklch(0.65 0.20 340) 100%
+  );
+
   color-scheme: light;
 }
 
+/* ─── Theme: midnight (deep navy + cyan) ───────────────── */
+:root[data-theme="midnight"] {
+  --c-bg:        oklch(0.16 0.025 250);
+  --c-surface:   oklch(0.22 0.030 250);
+  --c-surface-2: oklch(0.28 0.035 250);
+  --c-border:    oklch(0.34 0.030 250);
+  --c-fg:        oklch(0.96 0.01 220);
+  --c-fg-muted:  oklch(0.72 0.02 230);
+  --c-fg-dim:    oklch(0.56 0.02 240);
+
+  --c-brand-50:  oklch(0.96 0.05 200);
+  --c-brand-500: oklch(0.72 0.16 200);
+  --c-brand-600: oklch(0.65 0.18 202);
+  --c-brand-700: oklch(0.58 0.18 204);
+
+  --c-success: oklch(0.74 0.16 165);
+  --c-warning: oklch(0.78 0.16 80);
+  --c-danger:  oklch(0.65 0.22 20);
+
+  --gradient-iridescent: linear-gradient(
+    135deg,
+    oklch(0.75 0.18 200) 0%,
+    oklch(0.62 0.20 260) 50%,
+    oklch(0.70 0.16 220) 100%
+  );
+
+  color-scheme: dark;
+}
+
+/* ─── Theme: obsidian (pure black + violet) ────────────── */
+:root[data-theme="obsidian"] {
+  --c-bg:        oklch(0.10 0 0);
+  --c-surface:   oklch(0.16 0 0);
+  --c-surface-2: oklch(0.21 0 0);
+  --c-border:    oklch(0.28 0.005 300);
+  --c-fg:        oklch(0.985 0 0);
+  --c-fg-muted:  oklch(0.72 0.015 300);
+  --c-fg-dim:    oklch(0.55 0.015 300);
+
+  --c-brand-50:  oklch(0.95 0.05 310);
+  --c-brand-500: oklch(0.65 0.22 310);
+  --c-brand-600: oklch(0.58 0.24 312);
+  --c-brand-700: oklch(0.50 0.24 314);
+
+  --c-success: oklch(0.70 0.17 145);
+  --c-warning: oklch(0.78 0.16 80);
+  --c-danger:  oklch(0.62 0.22 25);
+
+  --gradient-iridescent: linear-gradient(
+    135deg,
+    oklch(0.65 0.22 310) 0%,
+    oklch(0.60 0.22 340) 50%,
+    oklch(0.70 0.18 20) 100%
+  );
+
+  color-scheme: dark;
+}
+
+/* ─── Theme: ember (warm dark + burnt orange) ──────────── */
+:root[data-theme="ember"] {
+  --c-bg:        oklch(0.14 0.012 40);
+  --c-surface:   oklch(0.20 0.015 40);
+  --c-surface-2: oklch(0.26 0.018 40);
+  --c-border:    oklch(0.32 0.020 40);
+  --c-fg:        oklch(0.97 0.008 60);
+  --c-fg-muted:  oklch(0.72 0.020 50);
+  --c-fg-dim:    oklch(0.55 0.025 50);
+
+  --c-brand-50:  oklch(0.95 0.04 50);
+  --c-brand-500: oklch(0.62 0.16 50);
+  --c-brand-600: oklch(0.55 0.17 48);
+  --c-brand-700: oklch(0.48 0.17 46);
+
+  --c-success: oklch(0.68 0.16 145);
+  --c-warning: oklch(0.78 0.16 80);
+  --c-danger:  oklch(0.60 0.22 15);
+
+  --gradient-iridescent: linear-gradient(
+    135deg,
+    oklch(0.62 0.16 50) 0%,
+    oklch(0.58 0.20 25) 50%,
+    oklch(0.65 0.18 75) 100%
+  );
+
+  color-scheme: dark;
+}
+
+/* ─── Theme: paper (warm cream + forest) ───────────────── */
+:root[data-theme="paper"] {
+  --c-bg:        oklch(0.97 0.012 85);
+  --c-surface:   oklch(0.94 0.014 85);
+  --c-surface-2: oklch(0.91 0.016 85);
+  --c-border:    oklch(0.84 0.018 85);
+  --c-fg:        oklch(0.20 0.020 145);
+  --c-fg-muted:  oklch(0.42 0.025 145);
+  --c-fg-dim:    oklch(0.55 0.025 145);
+
+  --c-brand-50:  oklch(0.95 0.05 145);
+  --c-brand-500: oklch(0.42 0.13 145);
+  --c-brand-600: oklch(0.36 0.13 145);
+  --c-brand-700: oklch(0.30 0.13 145);
+
+  --c-success: oklch(0.55 0.18 145);
+  --c-warning: oklch(0.65 0.18 70);
+  --c-danger:  oklch(0.50 0.22 25);
+
+  --gradient-iridescent: linear-gradient(
+    135deg,
+    oklch(0.55 0.16 145) 0%,
+    oklch(0.50 0.16 80) 50%,
+    oklch(0.55 0.18 30) 100%
+  );
+
+  color-scheme: light;
+}
+
+/* ─────────────────────────────────────────────────────── */
+
 @layer utilities {
-  .bg-iridescent {
-    background-image: linear-gradient(
-      135deg,
-      oklch(0.75 0.18 220) 0%,
-      oklch(0.65 0.22 290) 50%,
-      oklch(0.70 0.20 340) 100%
-    );
-  }
+  .bg-iridescent { background-image: var(--gradient-iridescent); }
 
   .glass {
     backdrop-filter: blur(20px) saturate(1.4);
     background: oklch(1 0 0 / 0.04);
     border: 1px solid oklch(1 0 0 / 0.08);
+  }
+
+  /* Light themes need a darker glass tint for contrast */
+  :root[data-theme="light"] .glass,
+  :root[data-theme="paper"] .glass {
+    background: oklch(0 0 0 / 0.03);
+    border: 1px solid oklch(0 0 0 / 0.08);
   }
 
   .text-balance { text-wrap: balance; }
@@ -83,6 +238,8 @@ body {
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  transition: background-color var(--dur-base) var(--ease-standard),
+              color var(--dur-base) var(--ease-standard);
 }
 
 /* Focus rings */
