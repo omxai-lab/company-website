@@ -1,0 +1,49 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - main
+    tags:
+      - 'release/v*'
+
+jobs:
+  deploy-api:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - id: auth
+        name: Authenticate to Google Cloud
+        uses: google-github-actions/auth@v2
+        with:
+          # Note: Update with actual GCP project number and pool provider
+          workload_identity_provider: 'projects/123456789/locations/global/workloadIdentityPools/github/providers/my-repo'
+          service_account: 'gha-deployer@omxai-prod.iam.gserviceaccount.com'
+
+      - name: Set up Cloud SDK
+        uses: google-github-actions/setup-gcloud@v2
+
+      - name: Configure Docker
+        run: gcloud auth configure-docker us-central1-docker.pkg.dev
+
+      - name: Build and Push API (Staging)
+        if: github.ref == 'refs/heads/main'
+        run: |
+          cd apps/api
+          docker build -t us-central1-docker.pkg.dev/omxai-prod/api/api:staging .
+          docker push us-central1-docker.pkg.dev/omxai-prod/api/api:staging
+          gcloud run deploy api --image us-central1-docker.pkg.dev/omxai-prod/api/api:staging --tag=staging --region=us-central1
+
+      - name: Build and Push API (Production)
+        if: startsWith(github.ref, 'refs/tags/release/v')
+        run: |
+          cd apps/api
+          docker build -t us-central1-docker.pkg.dev/omxai-prod/api/api:${{ github.ref_name }} .
+          docker push us-central1-docker.pkg.dev/omxai-prod/api/api:${{ github.ref_name }}
+          gcloud run deploy api --image us-central1-docker.pkg.dev/omxai-prod/api/api:${{ github.ref_name }} --region=us-central1
+          gcloud run services update-traffic api --to-tags=${{ github.ref_name }}=10 --region=us-central1
