@@ -1,0 +1,15 @@
+# Firebase App Hosting configuration
+# Defines rollout settings and environment variables
+
+runConfig:
+  cpu: 1
+  memoryMiB: 512
+  concurrency: 80
+  minInstances: 0
+
+env:
+  - variable: NEXT_PUBLIC_API_BASE
+    value: https://api.omxai.com
+    availability:
+      - BUILD
+      - RUNTIME

@@ -1,0 +1,67 @@
+@import "tailwindcss";
+
+@theme inline {
+  /* Neutral canvas (dark default) */
+  --color-bg:        oklch(0.145 0 0);    /* near-black */
+  --color-surface:   oklch(0.205 0 0);    /* card */
+  --color-surface-2: oklch(0.245 0 0);    /* elevated */
+  --color-border:    oklch(0.305 0 0);
+  --color-fg:        oklch(0.985 0 0);    /* primary text */
+  --color-fg-muted:  oklch(0.708 0 0);    /* secondary */
+  --color-fg-dim:    oklch(0.556 0 0);    /* tertiary */
+
+  /* Brand: Cool Blue (consulting authority) */
+  --color-brand-50:  oklch(0.97 0.02 240);
+  --color-brand-500: oklch(0.62 0.19 250);
+  --color-brand-600: oklch(0.55 0.21 252);
+  --color-brand-700: oklch(0.48 0.20 254);
+
+  /* Semantic */
+  --color-success: oklch(0.70 0.17 145);
+  --color-warning: oklch(0.78 0.16 80);
+  --color-danger:  oklch(0.62 0.22 25);
+  --color-info:    var(--color-brand-500);
+
+  /* Fonts */
+  --font-sans:    var(--font-inter), system-ui, sans-serif;
+  --font-display: var(--font-space-grotesk), var(--font-sans);
+  --font-mono:    var(--font-jetbrains-mono), ui-monospace, monospace;
+}
+
+:root {
+  --color-bg:        oklch(0.145 0 0);
+  --color-surface:   oklch(0.205 0 0);
+  --color-surface-2: oklch(0.245 0 0);
+  --color-border:    oklch(0.305 0 0);
+  --color-fg:        oklch(0.985 0 0);
+  --color-fg-muted:  oklch(0.708 0 0);
+  --color-fg-dim:    oklch(0.556 0 0);
+}
+
+/* Light mode override */
+:root[data-theme="light"] {
+  --color-bg:        oklch(0.985 0.005 90);  /* Cloud Dancer */
+  --color-surface:   oklch(1 0 0);
+  --color-surface-2: oklch(0.97 0 0);
+  --color-border:    oklch(0.92 0 0);
+  --color-fg:        oklch(0.15 0 0);
+  --color-fg-muted:  oklch(0.42 0 0);
+  --color-fg-dim:    oklch(0.55 0 0);
+}
+
+@layer utilities {
+  .bg-iridescent {
+    background-image: linear-gradient(
+      135deg,
+      oklch(0.75 0.18 220) 0%,
+      oklch(0.65 0.22 290) 50%,
+      oklch(0.70 0.20 340) 100%
+    );
+  }
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-fg);
+  font-family: var(--font-sans);
+}
