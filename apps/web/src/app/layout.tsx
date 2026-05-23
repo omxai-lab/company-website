@@ -22,14 +22,14 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "OMXAI — Ship production AI in 90 days, keep the code.",
+  title: "Tymora Labs — We turn complex ideas into products people love.",
   description:
-    "Builder-focused AI venture studio. Fixed timelines, weekly demos, full code transfer at handover. No vendor lock-in.",
-  metadataBase: new URL("https://omxai.com"),
+    "We combine elite product design with clean, scalable code to build blazingly fast, secure software that solves real-world problems.",
+  metadataBase: new URL("https://tymora.io"),
   openGraph: {
-    title: "OMXAI — Ship production AI in 90 days, keep the code.",
+    title: "Tymora Labs — We turn complex ideas into products people love.",
     description:
-      "Builder-focused AI venture studio. Fixed timelines, weekly demos, full code transfer at handover.",
+      "We combine elite product design with clean, scalable code to build blazingly fast, secure software.",
     type: "website",
   },
 };

@@ -43,18 +43,18 @@ export default function SiteFooter() {
             <div className="flex items-center gap-2 mb-4">
               <span
                 aria-hidden="true"
-                className="w-7 h-7 rounded-lg bg-iridescent flex items-center justify-center text-[11px] font-bold text-bg font-display"
+                className="w-7 h-7 rounded-lg bg-iridescent flex items-center justify-center text-[10px] font-bold text-bg font-display"
               >
-                OMX
+                TYM
               </span>
-              <span className="font-display text-sm font-semibold">OMXAI</span>
+              <span className="font-display text-sm font-semibold">Tymora Labs</span>
             </div>
             <p className="text-xs leading-relaxed text-fg-dim">
-              Builder-focused AI venture studio.
+              We design and build high-performance
               <br />
-              Consulting funds products.
+              digital products that solve complex
               <br />
-              Products compound authority.
+              problems with simple, elegant code.
             </p>
           </div>
 
@@ -80,7 +80,7 @@ export default function SiteFooter() {
         </div>
 
         <div className="py-6 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-fg-dim">
-          <p>&copy; {year} OMXAI Ltd. All rights reserved.</p>
+          <p>&copy; {year} Tymora Labs Ltd. All rights reserved.</p>
           <p>Built with Next.js 15, React 19, Tailwind v4.</p>
         </div>
       </div>

@@ -41,11 +41,11 @@ export default function HomePage() {
         <div className="flex items-center gap-2">
           <span 
             aria-hidden="true"
-            className="w-7 h-7 rounded-lg bg-iridescent flex items-center justify-center text-[11px] font-bold text-bg font-display"
+            className="w-7 h-7 rounded-lg bg-iridescent flex items-center justify-center text-[10px] font-bold text-bg font-display"
           >
-            OMX
+            TYM
           </span>
-          <span className="font-display text-sm font-semibold tracking-tight">OMXAI</span>
+          <span className="font-display text-sm font-semibold tracking-tight text-fg">Tymora Labs</span>
         </div>
       </header>
 
@@ -135,7 +135,7 @@ export default function HomePage() {
 
       {/* Minimal Footer */}
       <footer className="w-full max-w-7xl mx-auto text-center text-xs text-fg-dim z-10 border-t border-border/20 pt-6 mt-12">
-        &copy; {new Date().getFullYear()} OMXAI. All rights reserved.
+        &copy; {new Date().getFullYear()} Tymora Labs. All rights reserved.
       </footer>
     </main>
   );
