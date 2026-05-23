@@ -24,7 +24,7 @@ export default function DemoWidget() {
 
   useEffect(() => {
     let cancelled = false;
-    let timers: ReturnType<typeof setTimeout>[] = [];
+    const timers: ReturnType<typeof setTimeout>[] = [];
 
     const run = async () => {
       setShown([]);

@@ -1,0 +1,16 @@
+# Firebase App Hosting configuration file
+# See https://firebase.google.com/docs/app-hosting/configure for details
+
+specVersion: v1beta
+
+runConfig:
+  # Compute resources allocated to the Cloud Run instance
+  cpu: 1
+  memoryMiB: 2048
+
+  # Number of concurrent requests an instance can process (default 80)
+  concurrency: 80
+
+  # Cost ceilings: scales down to zero when inactive, max instances capped at 10
+  minInstances: 0
+  maxInstances: 10
