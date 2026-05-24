@@ -1,44 +1,36 @@
-# OMXAI
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-AI venture studio. Hybrid consulting + product. Builder-focused.
+## Getting Started
 
-This repo: corporate website + product portal monorepo.
-
-## Docs
-
-- [STRATEGY.md](STRATEGY.md) — positioning, IA, page anatomy
-- [ARCHITECTURE.md](ARCHITECTURE.md) — stack, file tree, deploy, env, cost
-- [DESIGN.md](DESIGN.md) — tokens, components, motion
-- [docs/adr/](docs/adr/) — architecture decisions
-- [docs/research/gemini-blueprint.md](docs/research/gemini-blueprint.md) — raw strategic research input
-
-## Quick start
+First, run the development server:
 
 ```bash
-pnpm install
-pnpm dev          # site on :3000
-pnpm build
-pnpm test
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
 ```
 
-Requires: Node 20+, pnpm 9+, gcloud CLI, Firebase CLI.
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-## Layout
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-```
-apps/
-  web/            # Next.js corporate site + product portal
-  api/            # FastAPI on Cloud Run — AI inference, RAG
-packages/
-  ui/             # shared React components (shadcn-based)
-  config/         # ts/eslint/tailwind shared config
-  genkit-flows/   # Vertex AI orchestration flows
-infra/
-  firebase/       # apphosting.yaml, firestore.rules, storage.rules
-  terraform/      # GCP project, IAM, BigQuery, secrets
-docs/
-```
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-## Status
+## Learn More
 
-Pre-MVP. Strategy + architecture defined. Scaffold pending.
+To learn more about Next.js, take a look at the following resources:
+
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+
+## Deploy on Vercel
+
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
