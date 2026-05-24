@@ -1,4 +1,7 @@
-import { ArrowRight, Sparkles, Trophy, CalendarDays, Megaphone } from "lucide-react";
+import { ArrowRight, Sparkles, Trophy, CalendarDays, Megaphone, Clock, ShieldCheck, Mail } from "lucide-react";
+import SiteNav from "./components/SiteNav";
+import SiteFooter from "./components/SiteFooter";
+import ContactForm from "./components/ContactForm";
 
 export default function HomePage() {
   const products = [
@@ -29,25 +32,14 @@ export default function HomePage() {
   ];
 
   return (
-    <main className="min-h-screen bg-bg text-fg flex flex-col justify-between p-6 md:p-12 relative overflow-hidden">
-      {/* Background radial highlight */}
-      <div 
-        className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-brand-500/5 rounded-full blur-[140px] pointer-events-none" 
-        aria-hidden="true" 
-      />
-
-      {/* Header bar / Logo */}
-      <header className="w-full max-w-7xl mx-auto z-10 flex justify-between items-center pb-8 border-b border-border/20">
-        <div className="flex items-center gap-2">
-          <span 
-            aria-hidden="true"
-            className="w-7 h-7 rounded-lg bg-iridescent flex items-center justify-center text-[10px] font-bold text-bg font-display"
-          >
-            TYM
-          </span>
-          <span className="font-display text-sm font-semibold tracking-tight text-fg">Tymora Labs</span>
-        </div>
-      </header>
+    <>
+      <SiteNav />
+      <main id="main" className="min-h-screen bg-bg text-fg flex flex-col justify-between px-6 md:px-12 pt-16 relative overflow-hidden">
+        {/* Background radial highlight */}
+        <div 
+          className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-brand-500/5 rounded-full blur-[140px] pointer-events-none" 
+          aria-hidden="true" 
+        />
 
       {/* 1. Hero Content */}
       <section className="w-full max-w-7xl mx-auto py-24 md:py-32 z-10">
@@ -133,10 +125,43 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Minimal Footer */}
-      <footer className="w-full max-w-7xl mx-auto text-center text-xs text-fg-dim z-10 border-t border-border/20 pt-6 mt-12">
-        &copy; {new Date().getFullYear()} Tymora Labs. All rights reserved.
-      </footer>
-    </main>
+      {/* 3. Contact Us / Inquiry Section */}
+      <section id="contact" className="w-full max-w-7xl mx-auto py-20 z-10 border-t border-border/20 scroll-mt-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div className="flex flex-col gap-6 reveal">
+            <span className="text-[11px] font-semibold uppercase tracking-[0.12em] text-brand-500">Contact Us</span>
+            <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-[-0.025em] leading-tight">
+              Ready to deploy? <br />
+              <span className="text-brand-500">Let&apos;s collaborate.</span>
+            </h2>
+            <p className="text-base text-fg-muted max-w-md leading-relaxed">
+              Have questions about integration complexity, scale limits, or custom features? Get in touch. You will always speak directly with a product engineer—no sales representatives, no automated response loops.
+            </p>
+
+            <div className="flex flex-col gap-4 mt-4">
+              <div className="flex items-center gap-3 text-xs font-mono text-fg-dim">
+                <Clock size={16} className="text-brand-500" aria-hidden="true" />
+                <span>Same-day engineering response in under 2 hours.</span>
+              </div>
+              <div className="flex items-center gap-3 text-xs font-mono text-fg-dim">
+                <ShieldCheck size={16} className="text-brand-500" aria-hidden="true" />
+                <span>100% direct developer chats. No generic sales loops.</span>
+              </div>
+              <div className="flex items-center gap-3 text-xs font-mono text-fg-dim">
+                <Mail size={16} className="text-brand-500" aria-hidden="true" />
+                <span>Or email directly: <a href="mailto:support@tymora.io" className="text-brand-500 hover:underline">support@tymora.io</a></span>
+              </div>
+            </div>
+          </div>
+
+          <div className="reveal delay-1">
+            <ContactForm />
+          </div>
+        </div>
+      </section>
+
+      </main>
+      <SiteFooter />
+    </>
   );
 }

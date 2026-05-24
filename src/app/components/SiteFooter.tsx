@@ -5,24 +5,6 @@ export default function SiteFooter() {
 
   const cols = [
     {
-      title: "Company",
-      links: [
-        { label: "About", href: "/about" },
-        { label: "Work", href: "/work" },
-        { label: "Insights", href: "/insights" },
-        { label: "Careers", href: "https://linkedin.com" },
-      ],
-    },
-    {
-      title: "Solutions",
-      links: [
-        { label: "AI Strategy", href: "/solutions/strategy" },
-        { label: "Agent Build", href: "/solutions/agents" },
-        { label: "Data Platform", href: "/solutions/data-platform" },
-        { label: "Studio", href: "/studio" },
-      ],
-    },
-    {
       title: "Legal",
       links: [
         { label: "Privacy", href: "/legal/privacy" },

@@ -13,10 +13,10 @@ export default function AboutPage() {
             Our Studio
           </span>
           <h1 className="font-display text-4xl lg:text-5xl font-semibold tracking-[-0.03em] leading-tight">
-            About OMXAI
+            About Tymora Labs
           </h1>
           <p className="text-lg text-fg-muted max-w-xl">
-            We are a builder-focused AI venture studio. We co-found, fund, and validate spinout products using targeted consulting engagements.
+            We design and build high-performance scheduling and communication digital products. We focus on clean, scalable code and elegant interfaces that solve real-world operational problems.
           </p>
 
           <div className="w-full max-w-md rounded-2xl glass p-8 mt-6 relative overflow-hidden">
